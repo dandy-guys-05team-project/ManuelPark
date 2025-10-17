@@ -1,5 +1,7 @@
 package com.example.firstproject.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,5 +42,10 @@ public class ArticleController {
         Article articleEntity = articleRepository.findById(id).orElse(null);
         model.addAttribute("article", articleEntity);
         return "articles/show";
+    }
+    @GetMapping("/articles")
+    public String index() {
+        List<Article> articleEntityList = articleRepository.findAll();
+        return "";
     }
 }
